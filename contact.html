@@ -1,102 +1,152 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Farm to Table</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grace Untamed</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="styles.css?v=4">
+</head>
 <body class="d-flex flex-column min-vh-100">
-  <nav class="navbar navbar-expand-lg bg-custom">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><img src="images/farm-logo-color.svg" alt="Farm to Table" class="logo"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="services.html">Services</a>
-            </li>
-            <li class="nav-item"></li>
-              <li><a class="nav-link" href="contact.html">Contact</a></li>
-              </ul>
+    <nav class="navbar navbar-expand-lg bg-custom">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"><img src="images/logo-round-gold-trans.png" style="max-width:150px; height:auto;"alt="Grace Untamed" class="logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item"></li>
+                <li><a class="nav-link" href="portfolio.html">Design Vault</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">Our Story</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services.html">Services</a>
+              </li>
+              <li class="nav-item"></li>
+                <li><a class="nav-link" href="contact.html">Let's Connect</a>
+                </li>
+                </ul>
+          </div>
+        </div>
+      </nav>
+
+<section id="contact-intro" class="py-5 text-center">
+  <div class="container" style="max-width: 800px;">
+    <h2 class="mb-3" style="color:#f3c1c2;">Get in Touch</h2>
+    <p style="color:#ffffff;">
+      I’d love to hear from you. Whether you’re interested in starting a new project, 
+      collaborating, or simply have a question, fill out the form below and I’ll get back to you as soon as I can.
+    </p>
+  </div>
+</section>
+
+
+<!-- contact.html (Formspree version) -->
+<section id="contact" class="py-5">
+  <div class="container" style="max-width: 760px;">
+    <h2 class="h3 mb-4" style="color:#f3c1c2;">Contact</h2>
+
+    <form id="contactForm" action="https://formspree.io/f/your-endpoint" method="POST" novalidate>
+      <!-- helps Formspree know where to send; optional if set in dashboard -->
+      <input type="hidden" name="_subject" value="New portfolio contact">
+      <input type="hidden" name="to" value="grace.untamed.design@gmail.com">
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Name *</label>
+          <input type="text" name="name" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Title</label>
+          <input type="text" name="title" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Business Name</label>
+          <input type="text" name="business" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Email *</label>
+          <input type="email" name="email" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Phone</label>
+          <input type="tel" name="phone" class="form-control">
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Comments *</label>
+          <textarea name="comments" rows="5" class="form-control" required></textarea>
+        </div>
+
+        <!-- Honeypot -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <small class="d-block mt-2" id="formNote" style="color:#fff;"></small>
         </div>
       </div>
-    </nav>
-
-<div class="container m-4 contactstyle">
-<div class="row">
-<div class="col-lg-9">
-  <form>
-    <div class="mb-3">
-     <label for="exampleFormControlInput1" class="form-label">Name</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="John Smith">
+    </form>
   </div>
-  <div class="mb-3">
-    <label for="exampleFormControlInput2" class="form-label">Subject</label>
-    <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Subject">
-</div>
-<div class="mb-3">
-<label for="exampleFormControlInput3" class="form-label">Email</label>
- <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="JSmith@email.com">
-</div>
-<div class="mb-3">
-<label for="exampleFormControlInput4" class="form-label">Phone Number</label>
- <input type="tel" class="form-control" id="exampleFormControlInput4" placeholder="555-555-5555">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea5" class="form-label">Comments</label>
-  <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" placeholder="Comments"></textarea>
-</div>
-<button type="submit" class="btn btn-primary mb-2">Submit</button>
-  </form>
-</div>
+</section>
 
-<div class="col-lg-3 text-center">
-  <img src="images/farm-logo-color.svg" alt="Farm to Table" class="img-fluid">
-  <h1>Farm to Table</h1>
-  <p>5987 Baldwin-Carre Road <br>Elberta, Alabama 36530 <br>251-222-2222</p>
-  <h1>Hours</h1>
-  <p>Monday-Friday 9am-4pm</p>
-</div>
-</div>
-</div>
+<script>
+  // Optional: show a friendly message without leaving the page
+  const form = document.getElementById('contactForm');
+  const note = document.getElementById('formNote');
 
-<footer class="footer mt-3 py-3 fixed-bottom">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-lg-6">
-        <h1>Farm to Table</h1>
-        <p>5987 Baldwin-Carre Road <br>Elberta, Alabama 36530 <br>251-222-2222</p>
-      </div>
-      <div class="col-lg-6">
-        <h1>Hours</h1>
-        <p>Monday-Friday 9am-4pm</p>
-        <h1>Email</h1>
-        <p>contact@farmtotablecsa.ftt</p>
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    note.textContent = 'Sending...';
 
-        <a href="http://www.facebook.com/farm2tablecsa"><i class="bi bi-facebook"></i></a>
-        <a href="http://www.instagram.com/farm2tablecsa"><i class="bi bi-instagram"></i></a>
-        <a href="http://www.instagram.com/farm2tablecsa"><i class="bi bi-youtube"></i></a>
-        <p>&copy;2023, Farm to Table.</p>
-      </div>
-    </div> 
-  </div> 
-</footer>
+    const data = new FormData(form);
+    const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    if (res.ok) {
+      form.reset();
+      note.textContent = 'Thanks! Your message was sent.';
+    } else {
+      note.textContent = 'There was a problem. Please try again or email me at grace.untamed.design@gmail.com.';
+    }
+  });
+</script>
 
-</body>
+<style>
+  #contact, #contact p, #contact label, #contact small { color:#fff; }
+  #contact h2 { color:#f3c1c2; }
+</style>
+
+
+
+          <footer class="footer mt-3">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1>Grace Untamed</h1>
+            <p>Tyler, Tx 75703 <br>430-295-0618</p>
+          </div>
+          <div class="col-lg-6">
+            <h1>Email</h1>
+            <p>grace.untamed.design@gmail.com</p>
+            <a href="https://www.facebook.com/profile.php?id=61581233181171"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/graceuntameddesigns/"><i class="bi bi-instagram"></i></a>
+            <p>&copy;2025, Grace Untamed</p>
+          </div>
+        </div> 
+      </div> 
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
