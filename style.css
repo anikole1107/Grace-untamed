@@ -1,5 +1,6 @@
-body{
-  background-color: #333333;
+/* ===================== Base Styles ===================== */
+body {
+  background-color: #333333 !important;
   color: #ffffff;
   font-family: 'Playfair Display', serif;
 }
@@ -10,13 +11,15 @@ body{
 
 .nav-link:link {
   font-family: 'Playfair Display', serif;
-  color:#ffffff;
+  color: #ffffff;
   font-size: 30px;
-  font-weight:500;
+  font-weight: 500;
 }
+
 .nav-link:visited {
   color: #b97f81;
 }
+
 .nav-link:hover {
   color: #ffffff !important;
 }
@@ -26,44 +29,42 @@ body{
 }
 
 .header {
-  background-color:#000000; 
+  background-color: #000000;
   color: #ffffff;
   position: relative;
 }
 
-
 .footer {
-  background-color:#000000; 
+  background-color: #000000;
   color: #ffffff;
   position: relative;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-
 .bi {
-  font-weight:500;
+  font-weight: 500;
   color: #f3c1c2;
 }
+
 .bi:hover {
   color: #ffffff;
 }
 
-
 h1 {
   font-family: 'Playfair Display', serif;
-  color:#c5a253;
+  color: #c5a253;
   font-size: 30px;
 }
 
 h2 {
-  font-weight:600;
-  color:#ffffff;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 h3 {
   font-family: 'Playfair Display', serif;
-  color:#ffffff;
+  color: #ffffff;
   font-size: 25px;
 }
 
@@ -73,10 +74,9 @@ h6 {
   font-size: 20px;
 }
 
-
 p {
   font-family: 'Playfair Display', serif;
-  color:#ffffff;
+  color: #ffffff;
   font-size: 20px;
   font-weight: 600;
 }
@@ -84,160 +84,38 @@ p {
 .contactstyle {
   font-family: 'Playfair Display', serif;
 }
+
 .form-label {
-  color:#f3c1c2;
-  font-weight:400;
+  color: #f3c1c2;
+  font-weight: 400;
   font-size: 20px;
   text-transform: uppercase;
 }
+
 .form-control {
-  background-color:#36454F; /* dark slate */
+  background-color: #36454F; /* dark slate */
 }
+
 .btn-primary {
   background-color: #36454F;
   border: none;
 }
 
-<!-- ===================== Portfolio ===================== -->
-<section id="portfolio" class="py-5">
-  <div class="container">
+/* ===================== Portfolio ===================== */
+#portfolio {
+  color: #ffffff; /* default white text */
+}
 
-    <!-- 1 -->
-    <div class="row align-items-center gy-4 py-4">
-      <div class="col-md-6">
-        <img src="images/donny-lawn-services.jpg" class="d-block mx-auto img-fluid rounded"
-             alt="Donny’s Lawn Service Flyer">
-      </div>
-      <div class="col-md-6">
-        <h3 class="h4 mb-2">Donny’s Lawn Service Flyer</h3>
-        <p class="meta mb-2">Donny’s • Brand flyer • 2024</p>
-        <p>One-page flyer built for quick reads: clear headline, simple service list, and a friendly call for estimates.</p>
-      </div>
-    </div>
+#portfolio h3 {
+  color: #f3c1c2; /* pink headings */
+}
 
-    <!-- 2 -->
-    <div class="row align-items-center gy-4 py-4 flex-md-row-reverse">
-      <div class="col-md-6">
-        <img src="images/nf-logo-red.jpg" class="d-block mx-auto img-fluid rounded"
-             alt="Nearly Famous Logo">
-      </div>
-      <div class="col-md-6">
-        <h3 class="h4 mb-2">Nearly Famous Logo</h3>
-        <p class="meta mb-2">Nearly Famous • Logo mark • 2024</p>
-        <p>Winged burger mark with chunky type and a strong outline for visibility across truck, menus, and merch.</p>
-      </div>
-    </div>
+#portfolio .meta {
+  color: #f3c1c2; /* pink for brand/role/year lines */
+  font-weight: 500;
+}
 
-    <!-- 3 -->
-    <div class="row align-items-center gy-4 py-4">
-      <div class="col-md-6">
-        <img src="images/art-spectrum.jpg" class="d-block mx-auto img-fluid rounded"
-             alt="Art on the Spectrum Poster">
-      </div>
-      <div class="col-md-6">
-        <h3 class="h4 mb-2">Art on the Spectrum Fundraiser Poster</h3>
-        <p class="meta mb-2">Art on the Spectrum • Event poster • 2023</p>
-        <p>High-contrast centerpiece with puzzle-heart icon and clear CTAs to support ticket sales.</p>
-      </div>
-    </div>
+#portfolio p {
+  color: #ffffff; /* keep body text white */
+}
 
-    <!-- 4 -->
-    <div class="row align-items-center gy-4 py-4 flex-md-row-reverse">
-      <div class="col-md-6">
-        <img src="images/donnys-clean-and-clear.jpg" class="d-block mx-auto img-fluid rounded"
-             alt="Donny’s Clean & Clear Seasonal Flyer">
-      </div>
-      <div class="col-md-6">
-        <h3 class="h4 mb-2">Donny’s Clean & Clear Seasonal Flyer</h3>
-        <p class="meta mb-2">Donny’s • Seasonal flyer • 2024</p>
-        <p>Fall and winter services shown side by side to make choices simple and drive pre-season bookings.</p>
-      </div>
-    </div>
-
-    <!-- 5 -->
-    <div class="row align-items-center gy-4 py-4">
-      <div class="col-md-6">
-        <img src="images/nf-menu.jpg" class="d-block mx-auto img-fluid rounded"
-             alt="Nearly Famous Menu">
-      </div>
-      <div class="col-md-6">
-        <h3 class="h4 mb-2">Nearly Famous Menu</h3>
-        <p class="meta mb-2">Nearly Famous • Menu design • 2024</p>
-        <p>Category blocks and price ladders to speed scanning and reduce order time at the window.</p>
-      </div>
-    </div>
-
-    <!-- 6 -->
-    <div class="row align-items-center gy-4 py-4 flex-md-row-reverse">
-      <div class="col-md-6">
-        <img src="images/racerx-logo.jpg" class="d-block mx-auto img-fluid rounded"
-             alt="RacerX Gaming Logo">
-      </div>
-      <div class="col-md-6">
-        <h3 class="h4 mb-2">RacerX Gaming Logo</h3>
-        <p class="meta mb-2">RacerX • Logo mark • 2023</p>
-        <p>Motion-driven infinity form with controller accents to signal speed and precision.</p>
-      </div>
-    </div>
-
-    <!-- 7 -->
-    <div class="row align-items-center gy-4 py-4">
-      <div class="col-md-6">
-        <img src="images/heritage.jpg" class="d-block mx-auto img-fluid rounded"
-             alt="Native American Heritage Editorial Spread">
-      </div>
-      <div class="col-md-6">
-        <h3 class="h4 mb-2">Native American Heritage Editorial Spread</h3>
-        <p class="meta mb-2">Editorial • Magazine spread • 2023</p>
-        <p>Two-column layout with a pull quote and cultural border motif for rhythm and focus.</p>
-      </div>
-    </div>
-
-    <!-- 8 -->
-    <div class="row align-items-center gy-4 py-4 flex-md-row-reverse">
-      <div class="col-md-6">
-        <img src="images/food-truck-flyer.jpg" class="d-block mx-auto img-fluid rounded"
-             alt="Nearly Famous Food Truck Flyer">
-      </div>
-      <div class="col-md-6">
-        <h3 class="h4 mb-2">Pay It Forward Food Truck – Coming Soon Poster</h3>
-        <p class="meta mb-2">Nearly Famous • Promotional poster • 2024</p>
-        <p>Bold headline and truck photo to tease the launch and highlight the community give-back.</p>
-      </div>
-    </div>
-
-    <!-- 9 -->
-    <div class="row align-items-center gy-4 py-4">
-      <div class="col-md-6">
-        <img src="images/train-ticket.png" class="d-block mx-auto img-fluid rounded"
-             alt="Horizon Railways Digital Ticket UI">
-      </div>
-      <div class="col-md-6">
-        <h3 class="h4 mb-2">Horizon Railways Digital Ticket</h3>
-        <p class="meta mb-2">Horizon Railways • UI mock • 2024</p>
-        <p>Mobile ticket concept with seat visualization, trip details, barcode, and onboard Wi-Fi info.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===================== Custom Styles ===================== -->
-<style>
-  #portfolio {
-    color: #ffffff; /* default white text */
-  }
-
-  #portfolio h3 {
-    color: #f3c1c2; /* pink headings */
-  }
-
-  #portfolio .meta {
-    color: #f3c1c2; /* pink for brand/role/year lines */
-    font-weight: 500;
-  }
-
-  #portfolio p {
-    color: #ffffff; /* keep body text white */
-  }
-</style>
