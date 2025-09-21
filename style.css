@@ -176,5 +176,15 @@ p {
   color: #e6e6e6 !important;   /* lighter gray (almost white) */
 }
 
+/* ===== Force all package text to white ===== */
+.services .card-body,
+.services .card-body p,
+.services .card-body li,
+.services .card-body ul,
+.services .card-body .small,
+.services .card-body .text-muted {
+  color: #ffffff !important;
+}
+
 
 
