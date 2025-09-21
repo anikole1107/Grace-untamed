@@ -105,6 +105,133 @@
   </button>
 </div>
 
+    <!-- ===================== Reviews ===================== -->
+<section id="reviews" class="py-5">
+  <div class="container" style="max-width: 900px;">
+    <h2 class="text-center mb-4" style="color:#f3c1c2;">Client Reviews</h2>
+
+    <!-- List -->
+    <div id="reviewsList" class="row g-4 mb-4"></div>
+
+    <!-- Submit a review -->
+    <div class="card bg-dark text-white border-0">
+      <div class="card-body">
+        <h3 class="h5 mb-3" style="color:#f3c1c2;">Share Your Experience</h3>
+
+        <form id="reviewForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Name *</label>
+              <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Rating *</label>
+              <select name="rating" class="form-select" required>
+                <option value="5" selected>★★★★★ (5)</option>
+                <option value="4">★★★★☆ (4)</option>
+                <option value="3">★★★☆☆ (3)</option>
+                <option value="2">★★☆☆☆ (2)</option>
+                <option value="1">★☆☆☆☆ (1)</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Review *</label>
+              <textarea name="text" rows="4" class="form-control" required></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Send Review</button>
+              <small id="reviewNote" class="ms-3"></small>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ====== CONFIG ======
+  const REVIEWS_API = 'YOUR_GAS_URL'; // e.g. https://script.google.com/macros/s/XXXX/exec
+
+  // Render stars
+  function stars(n) {
+    n = Math.max(1, Math.min(5, Number(n)||5));
+    const full = '★'.repeat(n);
+    const empty = '☆'.repeat(5-n);
+    return `<span class="text-warning" style="letter-spacing:1px">${full}</span><span class="text-secondary">${empty}</span>`;
+  }
+
+  // Load approved reviews
+  async function loadReviews() {
+    const list = document.getElementById('reviewsList');
+    list.innerHTML = '<div class="text-center text-white-50">Loading reviews…</div>';
+    try {
+      const res = await fetch(REVIEWS_API, { method: 'GET' });
+      const data = await res.json();
+      if (!data.ok) throw new Error('Failed to load');
+      if (!data.reviews || !data.reviews.length) {
+        list.innerHTML = '<div class="text-center text-white-50">No reviews yet. Be the first!</div>';
+        return;
+      }
+      list.innerHTML = data.reviews.map(r => `
+        <div class="col-md-6">
+          <div class="card bg-dark text-white h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <div class="mb-2">${stars(r.rating)}</div>
+              <p class="mb-3">${escapeHtml(r.text)}</p>
+              <div class="small text-muted">— ${escapeHtml(r.name)}</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    } catch (e) {
+      list.innerHTML = '<div class="text-center text-danger">Could not load reviews right now.</div>';
+    }
+  }
+
+  // Submit a review (goes in as not approved)
+  document.getElementById('reviewForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const note = document.getElementById('reviewNote');
+    note.textContent = 'Sending…';
+    const fd = new FormData(e.target);
+    const payload = {
+      name: fd.get('name'),
+      rating: fd.get('rating'),
+      text: fd.get('text')
+    };
+    try {
+      const res = await fetch(REVIEWS_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.ok) {
+        e.target.reset();
+        note.textContent = 'Thanks! Your review was submitted and will appear once approved.';
+      } else {
+        note.textContent = 'There was a problem. Please try again later.';
+      }
+    } catch {
+      note.textContent = 'Could not send right now.';
+    }
+  });
+
+  // Basic escaping for display
+  function escapeHtml(s) {
+    return (s || '').toString()
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#039;');
+  }
+
+  // Kick off
+  loadReviews();
+</script>
+
 
   <!-- FOOTER -->
   <footer class="footer mt-3">
