@@ -119,3 +119,8 @@ p {
   color: #ffffff; /* keep body text white */
 }
 
+.carousel-item img {
+  max-width: 600px;   /* prevents them from getting huge on desktops */
+  width: 100%;        /* lets them shrink on smaller screens */
+  height: auto;
+}
