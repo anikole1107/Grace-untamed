@@ -163,6 +163,18 @@ p {
   box-shadow: 0 10px 24px rgba(0,0,0,.35);
 }
 
+/* Force brighter text in Business Packages cards */
+.services .card-body,
+.services .card-body p,
+.services .card-body li,
+.services .card-body ul {
+  color: #ffffff !important;   /* pure white for max contrast */
+}
+
+.services .card-body .small,
+.services .card-body .text-muted {
+  color: #e6e6e6 !important;   /* lighter gray (almost white) */
+}
 
 
 
