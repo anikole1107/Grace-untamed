@@ -54,63 +54,20 @@
     </div>
   </section>
 
-  <!-- CONTACT FORM -->
-  <section id="contact" class="py-5">
-    <div class="container" style="max-width:760px;">
-      <h2 class="h3 mb-4" style="color:#f3c1c2;">Contact</h2>
+ <form action="https://formsubmit.co/grace.untamed.design@gmail.com" method="POST">
+  <input type="hidden" name="_subject" value="New portfolio contact">
+  <input type="hidden" name="_template" value="table">
+  <!-- REMOVE _next for this test -->
+  <!-- <input type="hidden" name="_next" value="thanks.html"> -->
 
-      <!-- IMPORTANT: email endpoint + simple relative redirect -->
-      <form action="https://formsubmit.co/grace.untamed.design@gmail.com" method="POST">
-        <!-- Options -->
-        <input type="hidden" name="_subject" value="New portfolio contact">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="thanks.html">
-        <!-- (CAPTCHA is ON by default because we do not set _captcha=false) -->
+  <label>Name* <input type="text" name="name" required></label>
+  <label>Email* <input type="email" name="email" required></label>
+  <label>Comments* <textarea name="comments" required></textarea></label>
 
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label class="form-label">Name *</label>
-            <input type="text" name="name" class="form-control" required>
-          </div>
+  <input type="text" name="_honey" style="display:none">
+  <button type="submit">Submit</button>
+</form>
 
-          <div class="col-md-6">
-            <label class="form-label">Title</label>
-            <input type="text" name="title" class="form-control">
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Business Name</label>
-            <input type="text" name="business" class="form-control">
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Email *</label>
-            <!-- keep name="email" so Reply-To works in your inbox -->
-            <input type="email" name="email" class="form-control" required>
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Phone</label>
-            <input type="tel" name="phone" class="form-control">
-          </div>
-
-          <div class="col-12">
-            <label class="form-label">Comments *</label>
-            <textarea name="comments" rows="5" class="form-control" required></textarea>
-          </div>
-
-          <!-- Honeypot anti-spam -->
-          <input type="text" name="_honey" style="display:none">
-          <!-- (optional) disable email address change by bots -->
-          <input type="hidden" name="_blacklist" value="http://,https://">
-
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </section>
 
   <!-- FOOTER -->
   <footer class="footer mt-3">
