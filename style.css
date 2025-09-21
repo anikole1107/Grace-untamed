@@ -131,44 +131,47 @@ p {
 #web-packages .rounded-3 { transition: transform .2s ease, box-shadow .2s ease; }
 #web-packages .rounded-3:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.35); }
 
-/* --- Services page: force solid colors & remove accidental fade --- */
-.services .card,
-.services .card .card-body,
-.services .card * {
+/* ===== Force full-contrast in Services & Web sections ===== */
+.services,
+#web-packages,
+#web-addons,
+#addons {
+  background-color: #333333 !important;       /* same page background */
+}
+
+/* If any ancestor set opacity/filter, cancel it here */
+.services, .services * {
   opacity: 1 !important;
   filter: none !important;
 }
 
-/* Card surface & borders */
+/* Cards: solid surface + readable text */
 .services .card {
-  background-color: #1e1e1e !important;   /* same dark panel as elsewhere */
+  background-color: #1e1e1e !important;
   border: 1px solid #2a2a2a !important;
   box-shadow: 0 6px 18px rgba(0,0,0,.25);
 }
 
-/* Readable text colors */
-.services .card-title {
-  color: #f3c1c2 !important;              /* your pink heading */
-}
+/* Headings use your pink */
+.services .card-title { color: #f3c1c2 !important; }
 
+/* Body text & bullets are white; subtle text is light gray */
 .services .card p,
 .services .card li,
-.services .card ul {
-  color: #ffffff !important;              /* bright body text & bullets */
-}
-
-.services .card .text-muted,
+.services .card ul,
 #web-packages p,
 #web-addons li,
 #addons li {
-  color: #cfcfcf !important;               /* “muted” but readable */
+  color: #ffffff !important;
 }
 
-/* Optional: make bullets sit a bit inside and breathe */
-.services .card ul {
-  list-style-position: outside;
-  padding-left: 1.25rem;
-  margin-bottom: .75rem;
+.services .card .small,
+.services .card .text-muted {
+  color: #cfcfcf !important;
 }
+
+/* Optional: if a global hover fade exists, override it */
+.services .card:hover { opacity: 1 !important; }
+
 
 
