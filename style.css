@@ -124,3 +124,6 @@ p {
   width: 100%;        /* lets them shrink on smaller screens */
   height: auto;
 }
+
+#reviews .card { background-color:#111; }
+#reviews .card p { margin-bottom: .5rem; }
