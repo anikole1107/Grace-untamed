@@ -1,23 +1,97 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="images/logo-round-gold.png" type="image/png">
-
+  <link rel="icon" href="images/logo-round-gold.png" type="image/png" />
   <title>Grace Untamed — Services</title>
 
   <!-- Vendor CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-  <!-- Your CSS (only once, with the highest version number) -->
-  <link rel="stylesheet" href="style.css?v=10">
+  <!-- Your main stylesheet (load once, with a fresh query to bust cache) -->
+  <link rel="stylesheet" href="style.css?v=11" />
+
+  <!-- Hardening styles so colors/spacing match even if cache fights us -->
+  <style>
+    :root{
+      --page-bg:#333333;          /* site background */
+      --panel-bg:#1f1f1f;         /* card / panel background */
+      --ink:#ffffff;              /* base text */
+      --muted:#cfcfcf;            /* secondary text */
+      --pink:#f3c1c2;             /* accent headings */
+      --footer-bg:#000000;        /* footer */
+    }
+
+    html,body{height:100%;}
+    body{
+      background:var(--page-bg);
+      color:var(--ink);
+      font-family:"Playfair Display", serif;
+    }
+
+    .navbar.bg-custom{ background:var(--footer-bg)!important; }
+
+    .section-title{ color:var(--pink); }
+    .h-pink{ color:var(--pink); }
+
+    /* Reusable dark panel */
+    .section-panel{
+      background:var(--panel-bg);
+      border-radius:1rem;
+      box-shadow:0 8px 24px rgba(0,0,0,.35);
+    }
+
+    /* Package cards */
+    .card-panel{
+      background:var(--panel-bg);
+      border:none;
+      border-radius:1rem;
+      box-shadow:0 8px 24px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+    .card-panel .card-title{ color:var(--pink); }
+    .card-panel .text-muted{ color:var(--muted)!important; }
+
+    /* Mockup images */
+    .pkg-image{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:.75rem;
+      margin-bottom:1rem;
+    }
+
+    /* Lists in panels */
+    .section-panel ul, .card-panel ul{
+      padding-left:1.25rem;
+      margin-bottom:1rem;
+    }
+
+    /* Full-bleed footer that always spans the viewport */
+    .footer{
+      background:var(--footer-bg);
+      color:var(--ink);
+      padding:48px 0;
+      margin-top:auto;            /* push footer to bottom when page is short */
+      width:100%;
+    }
+    .footer a{ color:var(--ink); }
+    .footer i{ font-size:1.25rem; }
+
+    /* Fix container spacing inside footer on very wide screens */
+    .footer .container{ max-width:1200px; }
+
+    /* Small tweaks on mobile */
+    @media (max-width: 575.98px){
+      .card-panel, .section-panel{ border-radius:.75rem; }
+      .footer h1{ font-size:1.5rem; }
+    }
+  </style>
 </head>
-
 
 <body class="d-flex flex-column min-vh-100">
 
@@ -25,86 +99,83 @@
   <nav class="navbar navbar-expand-lg bg-custom">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">
-        <img src="images/logo-round-gold-trans.png" style="max-width:150px;height:auto;" alt="Grace Untamed" class="logo">
+        <img src="images/logo-round-gold-trans.png" alt="Grace Untamed" class="logo" style="max-width:150px;height:auto;">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="portfolio.html">Design Vault</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">Our Story</a></li>
           <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Let's Connect</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Let’s Connect</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- ===================== Intro ===================== -->
+  <!-- Intro -->
   <section class="py-5">
     <div class="container">
       <div class="row mb-5">
         <div class="col text-center">
           <h1 class="section-title mb-3">Our Services</h1>
-          <p>
-            At Grace Untamed, we specialize in creating timeless, functional designs that help
-            businesses grow. Whether you’re starting fresh or looking to refresh your brand,
-            our packages are designed to fit your needs and goals.
-          </p>
-          <p>
-            Explore our service packages below. Each one is crafted to provide the right balance
-            of strategy, creativity, and design support for your business.
-          </p>
+          <p>At Grace Untamed, we build timeless, functional design that helps businesses grow. Explore our packages below.</p>
         </div>
       </div>
 
-      <!-- Packages grid -->
+      <!-- Brand & Print Packages -->
       <div class="row g-4">
         <!-- Starter Brand Kit -->
         <div class="col-md-4">
-          <div class="card card-panel h-100 text-light p-3">
+          <div class="card card-panel h-100 p-3">
+            <img src="images/mockups/starter.jpg" class="pkg-image" alt="Starter Brand Kit mockup">
             <div class="card-body">
-              <h3 class="card-title">Starter Brand Kit – $650</h3>
+              <h3 class="card-title">Starter Brand Kit — $650</h3>
               <ul>
-                <li>Logo design: 1 concept + 2 revisions (print & digital)</li>
-                <li>Custom business cards (front & back)</li>
+                <li>Logo design: 1 concept + 2 revisions (print &amp; digital)</li>
+                <li>Custom business cards (front &amp; back)</li>
                 <li>Flyer or postcard design (single/double-sided)</li>
               </ul>
-              <p class="small text-muted">Great for startups that need a professional look right away.</p>
+              <p class="small text-muted mb-0">Great for startups needing a professional look right away.</p>
             </div>
           </div>
         </div>
 
         <!-- Business Essentials -->
         <div class="col-md-4">
-          <div class="card card-panel h-100 text-light p-3">
+          <div class="card card-panel h-100 p-3">
+            <img src="images/mockups/business-essentials.jpg" class="pkg-image" alt="Business Essentials mockup">
             <div class="card-body">
-              <h3 class="card-title">Business Essentials – $1,150</h3>
+              <h3 class="card-title">Business Essentials — $1,150</h3>
               <ul>
                 <li>Everything in the Starter Kit</li>
                 <li>Letterhead template (digital)</li>
-                <li>Social media graphics: profile, banner & templates</li>
+                <li>Social media graphics: profile, banner &amp; templates</li>
                 <li>Extra flyer/postcard for a second promotion</li>
               </ul>
-              <p class="small text-muted">Perfect for businesses that want consistent branding across digital and print.</p>
+              <p class="small text-muted mb-0">Consistent branding across digital and print.</p>
             </div>
           </div>
         </div>
 
         <!-- Restaurant Essentials -->
         <div class="col-md-4">
-          <div class="card card-panel h-100 text-light p-3">
+          <div class="card card-panel h-100 p-3">
+            <img src="images/mockups/restaurant-essentials.jpg" class="pkg-image" alt="Restaurant Essentials mockup">
             <div class="card-body">
-              <h3 class="card-title">Restaurant Essentials – $1,600</h3>
+              <h3 class="card-title">Restaurant Essentials — $1,600</h3>
               <ul>
                 <li>Logo design or refresh</li>
                 <li>Business cards for staff/management</li>
                 <li>Flyer (promo or event)</li>
-                <li>Menu design (print & digital, up to 10 food photos)</li>
+                <li>Menu design (print &amp; digital, up to 10 food photos)</li>
               </ul>
-              <p class="small text-muted">Essential for restaurants that need a polished dine-in and online presence.</p>
+              <p class="small text-muted mb-0">A polished dine-in and online presence.</p>
             </div>
           </div>
         </div>
@@ -114,48 +185,51 @@
       <div class="row g-4 mt-4">
         <!-- Restaurant Growth -->
         <div class="col-md-4">
-          <div class="card card-panel h-100 text-light p-3">
+          <div class="card card-panel h-100 p-3">
+            <img src="images/mockups/restaurant-growth.jpg" class="pkg-image" alt="Restaurant Growth mockup">
             <div class="card-body">
-              <h3 class="card-title">Restaurant Growth – $2,600</h3>
+              <h3 class="card-title">Restaurant Growth — $2,600</h3>
               <ul>
                 <li>Everything in Restaurant Essentials</li>
                 <li>To-Go menu design</li>
                 <li>Tabletop inserts/menu boards</li>
                 <li>Custom social media graphics (3–4)</li>
               </ul>
-              <p class="small text-muted">Expand your reach with takeout, delivery, and marketing support.</p>
+              <p class="small text-muted mb-0">Expand your reach with takeout, delivery, and marketing support.</p>
             </div>
           </div>
         </div>
 
-        <!-- Full Business + Marketing Suite -->
+        <!-- Full Business + Marketing -->
         <div class="col-md-4">
-          <div class="card card-panel h-100 text-light p-3">
+          <div class="card card-panel h-100 p-3">
+            <img src="images/mockups/full-business.jpg" class="pkg-image" alt="Full Business + Marketing mockup">
             <div class="card-body">
-              <h3 class="card-title">Full Business + Marketing Suite – $4,000</h3>
+              <h3 class="card-title">Full Business + Marketing Suite — $4,000</h3>
               <ul>
                 <li>Custom logo package (2–3 concepts, multiple revisions)</li>
                 <li>Complete stationery set</li>
                 <li>Brochure (4–8 pages)</li>
                 <li>Complete menu design set (restaurant)</li>
               </ul>
-              <p class="small text-muted">A full-scale package for a complete brand identity.</p>
+              <p class="small text-muted mb-0">A full-scale package for a complete brand identity.</p>
             </div>
           </div>
         </div>
 
         <!-- Food Truck Package -->
         <div class="col-md-4">
-          <div class="card card-panel h-100 text-light p-3">
+          <div class="card card-panel h-100 p-3">
+            <img src="images/mockups/food-truck.jpg" class="pkg-image" alt="Food Truck Package mockup">
             <div class="card-body">
-              <h3 class="card-title">Food Truck Package – $3,200</h3>
+              <h3 class="card-title">Food Truck Package — $3,200</h3>
               <ul>
                 <li>Full truck wrap design (side, front, back)</li>
                 <li>Regular operating menu</li>
                 <li>Event menu (seasonal/faster-paced events)</li>
-                <li>Digital Linktree setup (links, social media, ordering, etc.)</li>
+                <li>Digital Linktree setup (links, social, ordering)</li>
               </ul>
-              <p class="small text-muted">Strong branding and visibility for mobile food businesses.</p>
+              <p class="small text-muted mb-0">Strong branding and visibility for mobile food businesses.</p>
             </div>
           </div>
         </div>
@@ -163,19 +237,19 @@
     </div>
   </section>
 
-  <!-- ===================== Web Design & Launch ===================== -->
+  <!-- Web Design & Launch -->
   <section id="web-packages" class="py-5">
     <div class="container">
-      <h2 class="section-title mb-4 text-center">Web Design & Launch</h2>
+      <h2 class="section-title text-center mb-4">Web Design &amp; Launch</h2>
       <p class="text-center mb-5" style="max-width:900px;margin:0 auto;">
         Modern, mobile-ready websites designed to match your brand and get you live fast.
-        All packages include responsive design, basic SEO, and domain launch support.
       </p>
 
       <div class="row g-4">
-        <!-- Web Design & Launch -->
+        <!-- Web Launch -->
         <div class="col-lg-4">
-          <div class="h-100 p-4 section-panel">
+          <div class="section-panel h-100 p-4">
+            <img src="images/mockups/web-launch.jpg" class="pkg-image" alt="Web Design & Launch mockup">
             <h3 class="h4 mb-2 h-pink">Web Design &amp; Launch</h3>
             <p class="mb-3"><strong>$2,600</strong></p>
             <ul>
@@ -187,13 +261,14 @@
               <li>Social share image + favicon</li>
               <li>2 rounds of revisions; 14-day post-launch support</li>
             </ul>
-            <p class="mb-0 text-muted">Perfect for small businesses that need a polished site, fast.</p>
+            <p class="text-muted mb-0">Perfect for small businesses that need a polished site, fast.</p>
           </div>
         </div>
 
         <!-- Web Essentials -->
         <div class="col-lg-4">
-          <div class="h-100 p-4 section-panel">
+          <div class="section-panel h-100 p-4">
+            <img src="images/mockups/web-essentials.jpg" class="pkg-image" alt="Web Essentials mockup">
             <h3 class="h4 mb-2 h-pink">Web Essentials (Starter)</h3>
             <p class="mb-3"><strong>$1,150</strong></p>
             <ul>
@@ -203,13 +278,14 @@
               <li>Basic SEO + domain connection</li>
               <li>1 round of revisions; 7-day post-launch support</li>
             </ul>
-            <p class="mb-0 text-muted">Great for simple needs or tight timelines.</p>
+            <p class="text-muted mb-0">Great for simple needs or tight timelines.</p>
           </div>
         </div>
 
-        <!-- Full Brand + Website Launch -->
+        <!-- Full Brand + Website -->
         <div class="col-lg-4">
-          <div class="h-100 p-4 section-panel">
+          <div class="section-panel h-100 p-4">
+            <img src="images/mockups/full-brand-web.jpg" class="pkg-image" alt="Full Brand + Website mockup">
             <h3 class="h4 mb-2 h-pink">Full Brand + Website Launch</h3>
             <p class="mb-3"><strong>$4,000</strong></p>
             <ul>
@@ -218,14 +294,14 @@
               <li>Business card design &amp; one promo flyer/postcard</li>
               <li>3 rounds of revisions; 30-day post-launch support</li>
             </ul>
-            <p class="mb-0 text-muted">Best for new businesses or full rebrands.</p>
+            <p class="text-muted mb-0">Best for new businesses or full rebrands.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== Web Add-Ons ===================== -->
+  <!-- Web Add-Ons -->
   <section id="web-addons" class="py-5">
     <div class="container section-panel p-4">
       <h3 class="mb-3 h-pink">Web Add-Ons</h3>
@@ -254,7 +330,7 @@
     </div>
   </section>
 
-  <!-- ===================== Add-On Services (non-web) ===================== -->
+  <!-- Add-On Services (non-web) -->
   <section id="addons" class="py-5">
     <div class="container section-panel p-4">
       <h3 class="mb-3 h-pink">Add-On Services</h3>
@@ -279,7 +355,7 @@
     </div>
   </section>
 
-  <!-- FOOTER (full-bleed) -->
+  <!-- FOOTER (always full-bleed) -->
   <footer class="footer">
     <div class="container text-center">
       <div class="row align-items-center gy-3">
@@ -298,7 +374,7 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS (once) -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
