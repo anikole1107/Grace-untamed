@@ -131,3 +131,44 @@ p {
 #web-packages .rounded-3 { transition: transform .2s ease, box-shadow .2s ease; }
 #web-packages .rounded-3:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.35); }
 
+/* --- Services page: force solid colors & remove accidental fade --- */
+.services .card,
+.services .card .card-body,
+.services .card * {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Card surface & borders */
+.services .card {
+  background-color: #1e1e1e !important;   /* same dark panel as elsewhere */
+  border: 1px solid #2a2a2a !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+/* Readable text colors */
+.services .card-title {
+  color: #f3c1c2 !important;              /* your pink heading */
+}
+
+.services .card p,
+.services .card li,
+.services .card ul {
+  color: #ffffff !important;              /* bright body text & bullets */
+}
+
+.services .card .text-muted,
+#web-packages p,
+#web-addons li,
+#addons li {
+  color: #cfcfcf !important;               /* “muted” but readable */
+}
+
+/* Optional: make bullets sit a bit inside and breathe */
+.services .card ul {
+  list-style-position: outside;
+  padding-left: 1.25rem;
+  margin-bottom: .75rem;
+}
+
+
