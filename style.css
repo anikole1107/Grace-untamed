@@ -176,15 +176,17 @@ p {
   color: #e6e6e6 !important;   /* lighter gray (almost white) */
 }
 
-/* ===== Force all package text to white ===== */
-.services .card-body,
-.services .card-body p,
-.services .card-body li,
-.services .card-body ul,
-.services .card-body .small,
-.services .card-body .text-muted {
-  color: #ffffff !important;
+/* Force white text inside the first packages grid cards */
+section.py-5 .card-panel .card-title { color:#f3c1c2 !important; }
+section.py-5 .card-panel .card-body,
+section.py-5 .card-panel .card-body p,
+section.py-5 .card-panel .card-body li,
+section.py-5 .card-panel .card-body ul,
+section.py-5 .card-panel .card-body .small,
+section.py-5 .card-panel .card-body .text-muted {
+  color:#ffffff !important;
 }
+
 
 
 
