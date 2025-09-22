@@ -145,35 +145,160 @@
   </button>
 </div>
 
-    <!-- REVIEW FORM — plain POST to FormSubmit (no JS) -->
-<form id="reviewForm" action="https://formsubmit.co/grace.untamed.design@gmail.com" method="POST">
-  <!-- FormSubmit settings -->
-  <input type="hidden" name="_subject" value="New review from site">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="https://grace-untamed.com/thanks.html">
+    <script>
+/* ===== Review form + list handler =====
+   Drop this in before </body>. Requirements:
+   - The review form should have id="reviewForm" and fields:
+       name="name", name="rating", name="text"
+   - A note element with id="reviewNote" to show status messages.
+   - A container with id="reviewsList" where approved reviews will be rendered.
+   - If you use FormSubmit, set the form's action to the FormSubmit endpoint you activated.
+   - Optionally set REVIEWS_API to a JSON endpoint that accepts POST {name,rating,text}.
+   - Reviews display reads from REVIEWS_JSON_URL (static JSON you update when approving).
+*/
 
-  <!-- visible fields -->
-  <div class="mb-2">
-    <label for="reviewer_name" class="form-label">Name *</label>
-    <input id="reviewer_name" name="reviewer_name" type="text" class="form-control" required>
-  </div>
+const REVIEWS_API = ''; // <-- OPTIONAL: set to your server endpoint (POST JSON {name,rating,text})
+const REVIEWS_JSON_URL = '/data/reviews.json'; // <-- static file of approved reviews (manual or automated)
 
-  <div class="mb-2">
-    <label for="rating" class="form-label">Rating</label>
-    <select id="rating" name="rating" class="form-control">
-      <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
-    </select>
-  </div>
+/* Utility: escape text for HTML insertion */
+function escapeHtml(s) {
+  return (s || '').toString()
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+}
 
-  <div class="mb-2">
-    <label for="review_text" class="form-label">Review *</label>
-    <textarea id="review_text" name="review_text" rows="4" class="form-control" required></textarea>
-  </div>
+/* Render reviews array into #reviewsList */
+function renderReviews(reviews) {
+  const container = document.getElementById('reviewsList');
+  if (!container) return;
+  if (!Array.isArray(reviews) || reviews.length === 0) {
+    container.innerHTML = '<p style="color:#cfcfcf">No reviews yet.</p>';
+    return;
+  }
 
-  <!-- anti-spam honeypot -->
-  <input type="text" name="_honey" style="display:none">
-  <button type="submit" class="btn btn-primary">Submit review</button>
-</form>
+  container.innerHTML = reviews.map(r => {
+    const name = escapeHtml(r.name || r.reviewer_name || 'Anonymous');
+    const text = escapeHtml(r.text || r.review_text || r.review || '');
+    const rating = escapeHtml(String(r.rating || r.ratingValue || ''));
+    // Simple card markup — matches site styling (you can tweak classes)
+    return `
+      <div class="card card-panel p-3 mb-3">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <strong style="color:#fff">${name}</strong>
+            ${rating ? `<span class="ms-2" style="color:#f3c1c2">· ${rating}/5</span>` : ''}
+          </div>
+        </div>
+        <p class="mb-0" style="color:#fff; margin-top:0.5rem;">${text}</p>
+      </div>
+    `;
+  }).join('');
+}
+
+/* Load approved reviews from a JSON file */
+async function loadReviews() {
+  try {
+    const res = await fetch(REVIEWS_JSON_URL, {cache: "no-store"});
+    if (!res.ok) {
+      console.warn('No reviews JSON found or fetch failed:', res.status);
+      renderReviews([]);
+      return;
+    }
+    const data = await res.json();
+    // Expecting an array of { name, rating, text } — adapt if your shape differs
+    renderReviews(data);
+  } catch (err) {
+    console.error('Error loading reviews:', err);
+    renderReviews([]);
+  }
+}
+
+/* Submit handler: will POST JSON to REVIEWS_API if set,
+   otherwise POST FormData to form.action (works with FormSubmit) */
+(function attachReviewSubmit() {
+  const form = document.getElementById('reviewForm');
+  const note = document.getElementById('reviewNote');
+
+  if (!form) {
+    console.warn('Review form (#reviewForm) not found.');
+    return;
+  }
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (note) { note.style.color = '#fff'; note.textContent = 'Sending…'; }
+
+    const fd = new FormData(form);
+    const payload = {
+      name: fd.get('name') || fd.get('reviewer_name') || '',
+      rating: fd.get('rating') || '',
+      text: fd.get('text') || fd.get('review_text') || ''
+    };
+
+    try {
+      if (REVIEWS_API && REVIEWS_API.trim() !== '') {
+        // POST JSON to your backend (expected response: { ok: true } or HTTP 200)
+        const res = await fetch(REVIEWS_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(()=>null);
+        if (res.ok && (data === null || data.ok === undefined || data.ok === true)) {
+          form.reset();
+          if (note) { note.style.color = 'lightgreen'; note.textContent = 'Thanks! Your review was submitted and will appear once approved.'; }
+        } else {
+          console.error('Server responded with error', res.status, data);
+          if (note) { note.style.color = '#f3c1c2'; note.textContent = 'There was a problem submitting your review. Please try again later.'; }
+        }
+      } else {
+        // No JSON API — use the form's action (e.g., FormSubmit) with FormData
+        const action = form.getAttribute('action');
+        if (!action) {
+          if (note) { note.style.color = '#f3c1c2'; note.textContent = 'Form action not found. Please contact the site owner.'; }
+          return;
+        }
+
+        // Add helpful hidden fields if not present (FormSubmit expects _subject/_template/_next optionally)
+        if (!form.querySelector('input[name="_subject"]')) {
+          const h = document.createElement('input'); h.type = 'hidden'; h.name = '_subject'; h.value = 'New review from site'; form.appendChild(h);
+        }
+        if (!form.querySelector('input[name="_template"]')) {
+          const h2 = document.createElement('input'); h2.type = 'hidden'; h2.name = '_template'; h2.value = 'table'; form.appendChild(h2);
+        }
+        // If you want a redirect page after submit uncomment and set _next:
+        // if (!form.querySelector('input[name="_next"]')) { const h3 = document.createElement('input'); h3.type = 'hidden'; h3.name = '_next'; h3.value = 'https://grace-untamed.com/thanks.html'; form.appendChild(h3); }
+
+        // Submit via fetch with FormData and expect JSON (FormSubmit supports Accept: application/json)
+        const res = await fetch(action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          if (note) { note.style.color = 'lightgreen'; note.textContent = 'Thanks! Your review was submitted and will appear once approved.'; }
+        } else {
+          // Try to extract message
+          let txt = await res.text().catch(()=> '');
+          console.error('Form submit failed', res.status, txt);
+          if (note) { note.style.color = '#f3c1c2'; note.textContent = 'Could not send right now. Please try again later.'; }
+        }
+      }
+    } catch (err) {
+      console.error('Submit error', err);
+      if (note) { note.style.color = '#f3c1c2'; note.textContent = 'Could not send right now.'; }
+    }
+  });
+})();
+
+/* Kick off load of approved reviews */
+loadReviews();
+</script>
+
 
 
   <!-- FOOTER -->
