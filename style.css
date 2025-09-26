@@ -2,127 +2,211 @@
    Grace Untamed — Global Styles (cleaned + consolidated)
    ========================================================= */
 
-/* -------- Base / Typography -------- */
-html, body { height: 100%; }
-
-body {
-  background-color: #333333 !important; /* page background */
-  color: #ffffff;
-  font-family: 'Playfair Display', serif;
+/* -------- Reset / Base -------- */
+:root{
+  --page-bg: #333333;     /* site background */
+  --panel-bg: #1e1e1e;    /* card / panel background */
+  --ink: #ffffff;         /* base text */
+  --muted: #cfcfcf;       /* secondary text */
+  --accent: #f3c1c2;      /* accent/pink */
+  --gold: #c5a253;        /* gold heading */
+  --footer-bg: #000000;
 }
 
-/* Accent/palette helpers */
-.section-title,
-.h-pink { color: #f3c1c2; }
+/* Reset browser default spacing and box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--page-bg);
+  color: var(--ink);
+  font-family: "Playfair Display", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------- Typography -------- */
 h1 {
-  font-family: 'Playfair Display', serif;
-  color: #c5a253;
+  font-family: "Playfair Display", serif;
+  color: var(--gold);
   font-size: 30px;
+  margin: 0 0 .5rem 0;
 }
-h2 { font-weight: 600; color: #ffffff; }
-h3 { font-family: 'Playfair Display', serif; color: #ffffff; font-size: 25px; }
-h6 { font-family: 'Playfair Display', serif; color: #ffffff; font-size: 20px; }
+
+h2 {
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 .5rem 0;
+}
+
+h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--ink);
+  font-size: 25px;
+  margin: 0 0 .5rem 0;
+}
+
+h6 {
+  font-family: "Playfair Display", serif;
+  color: var(--ink);
+  font-size: 20px;
+  margin: 0 0 .5rem 0;
+}
 
 p {
-  font-family: 'Playfair Display', serif;
-  color: #ffffff;
+  font-family: "Playfair Display", serif;
+  color: var(--ink);
   font-size: 20px;
   font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+/* Utility accent */
+.section-title,
+.h-pink {
+  color: var(--accent);
 }
 
 /* -------- Navbar -------- */
-.navbar.bg-custom { background-color: #000000; }
+/* Make navbar flush to top and above content */
+.navbar.bg-custom {
+  background-color: var(--footer-bg);
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  margin-bottom: 0;
+  box-shadow: none;
+}
 
-.nav-link:link {
-  font-family: 'Playfair Display', serif;
-  color: #ffffff;
-  font-size: 30px;
+/* Navbar brand/logo */
+.logo {
+  width: 150px;
+  height: auto;
+  display: inline-block;
+}
+
+/* Nav links - keep readable size but responsive */
+.nav-link {
+  font-family: "Playfair Display", serif;
+  color: var(--ink);
+  font-size: 18px; /* reduced to 18 for better fit on smaller screens */
   font-weight: 500;
+  padding: .5rem .75rem;
 }
 .nav-link:visited { color: #b97f81; }
-.nav-link:hover { color: #ffffff !important; }
+.nav-link:hover,
+.nav-link:focus { color: var(--ink) !important; text-decoration: none; }
 
-/* -------- Header / Logo -------- */
-.logo { width: 150px; }
+/* Navbar toggler icon color */
+.navbar-toggler {
+  border-color: rgba(255,255,255,0.1);
+}
+.navbar-toggler-icon {
+  background-image: none;
+  color: var(--ink);
+}
 
+/* -------- Header / Logo wrapper -------- */
 .header {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--footer-bg);
+  color: var(--ink);
   position: relative;
 }
 
 /* -------- Footer (full-width, always) -------- */
 .footer {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--footer-bg);
+  color: var(--ink);
   width: 100%;
   padding: 20px 0;
-  margin-top: auto;             /* lets it sit at bottom on short pages when body uses min-vh-100 */
+  margin-top: auto; /* sits at bottom on short pages */
   display: block;
 }
-.footer a { color: #ffffff; }
-.footer .container { max-width: 1200px; } /* nicer line length on very wide screens */
+.footer a { color: var(--ink); }
+.footer .container { max-width: 1200px; }
 
 /* -------- Icons -------- */
-.bi { font-weight: 500; color: #f3c1c2; }
-.bi:hover { color: #ffffff; }
+.bi { font-weight: 500; color: var(--accent); }
+.bi:hover { color: var(--ink); }
 
 /* -------- Forms -------- */
-.contactstyle { font-family: 'Playfair Display', serif; }
+.contactstyle { font-family: "Playfair Display", serif; }
 
 .form-label {
-  color: #f3c1c2;
+  color: var(--accent);
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 
-.form-control { background-color: #36454F; } /* dark slate */
-.btn-primary { background-color: #36454F; border: none; }
+.form-control {
+  background-color: #36454F; /* dark slate */
+  color: var(--ink);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.btn-primary {
+  background-color: #36454F;
+  border: none;
+  color: var(--ink);
+}
 
 /* =========================================================
    Portfolio / Carousel
    ========================================================= */
-#portfolio { color: #ffffff; }
-#portfolio h3, #portfolio .meta { color: #f3c1c2; }
+#portfolio { color: var(--ink); }
+#portfolio h3,
+#portfolio .meta { color: var(--accent); }
 #portfolio .meta { font-weight: 500; }
-#portfolio p { color: #ffffff; }
+#portfolio p { color: var(--ink); }
 
 .carousel-item img {
-  max-width: 600px;   /* prevents huge images on desktop */
-  width: 100%;        /* allows shrinking on mobile */
+  max-width: 600px;
+  width: 100%;
   height: auto;
+  display: block;
 }
 
 /* =========================================================
    Reviews
    ========================================================= */
-#reviews .card { background-color: #111; }
+#reviews .card {
+  background-color: #111;
+  color: var(--ink);
+  border: 1px solid rgba(255,255,255,0.03);
+}
 #reviews .card p { margin-bottom: .5rem; }
 
 /* =========================================================
-   Services + Web Sections (force consistent contrast)
+   Services + Web Sections (consistent contrast)
    ========================================================= */
-
-/* Section backgrounds should match the page bg */
 .services,
 #web-packages,
 #web-addons,
 #addons {
-  background-color: #333333 !important;
+  background-color: var(--page-bg);
+  color: var(--ink);
 }
 
-/* If any parent applied opacity/filter (e.g., animations), cancel it here */
-.services, .services * { opacity: 1 !important; filter: none !important; }
+/* Cancel parent opacity/filter that may leak into children */
+.services, .services * {
+  opacity: 1 !important;
+  filter: none !important;
+}
 
-/* Solid, high-contrast panels (use on any div) */
+/* Panels / cards */
 .card-panel,
 .section-panel {
-  background-color: #1e1e1e !important;
-  border: 1px solid #2a2a2a !important;
+  background-color: var(--panel-bg);
+  border: 1px solid #2a2a2a;
   border-radius: 1rem;
   box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  color: var(--ink);
 }
 
 /* Package mockup images */
@@ -134,9 +218,9 @@ p {
   margin-bottom: 1rem;
 }
 
-/* Card content contrast */
+/* Card titles and text contrast */
 .services .card-title,
-.card-panel .card-title { color: #f3c1c2 !important; }
+.card-panel .card-title { color: var(--accent); }
 
 .services .card p,
 .services .card li,
@@ -147,16 +231,18 @@ p {
 .section-panel p,
 .section-panel li,
 .section-panel ul {
-  color: #ffffff !important;
+  color: var(--ink);
 }
 
 .services .card .small,
 .services .card .text-muted,
-.section-panel .text-muted { color: #cfcfcf !important; }
+.section-panel .text-muted { color: var(--muted); }
 
-/* Subtle hover on web package panels */
+/* Hover lift for panels */
 #web-packages .rounded-3,
-.section-panel { transition: transform .2s ease, box-shadow .2s ease; }
+.section-panel {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
 #web-packages .rounded-3:hover,
 .section-panel:hover {
   transform: translateY(-4px);
@@ -168,25 +254,49 @@ p {
 .services .card-body p,
 .services .card-body li,
 .services .card-body ul {
-  color: #ffffff !important;   /* pure white for max contrast */
+  color: var(--ink);
 }
-
 .services .card-body .small,
 .services .card-body .text-muted {
-  color: #e6e6e6 !important;   /* lighter gray (almost white) */
+  color: #e6e6e6;
 }
 
-/* Force white text inside the first packages grid cards */
-section.py-5 .card-panel .card-title { color:#f3c1c2 !important; }
+/* Specific rule for sections using py-5 with card-panel */
+section.py-5 .card-panel .card-title { color: var(--accent); }
 section.py-5 .card-panel .card-body,
 section.py-5 .card-panel .card-body p,
 section.py-5 .card-panel .card-body li,
 section.py-5 .card-panel .card-body ul,
 section.py-5 .card-panel .card-body .small,
 section.py-5 .card-panel .card-body .text-muted {
-  color:#ffffff !important;
+  color: var(--ink);
 }
 
+/* =========================================================
+   Responsive tweaks
+   ========================================================= */
+@media (max-width: 991.98px) {
+  .nav-link { font-size: 16px; }
+  .logo { width: 130px; }
+  h3 { font-size: 20px; }
+  p { font-size: 18px; }
+}
 
+@media (max-width: 575.98px) {
+  .card-panel, .section-panel { border-radius: .75rem; }
+  .footer h1 { font-size: 1.5rem; }
+  .nav-link { font-size: 14px; padding: .25rem .5rem; }
+  .logo { width: 120px; }
+}
 
+/* =========================================================
+   Accessibility / small refinements
+   ========================================================= */
 
+/* Make images block-level so no inline-gap above them */
+img { display: block; max-width: 100%; height: auto; }
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
